@@ -51,6 +51,12 @@ export interface ResultWithEvent extends Result {
 // Categorías del ranking
 export type Category = 'Master' | 'Avanzado' | 'Intermedio' | 'Iniciado' | 'Sin clasificar';
 
+export type Threshold = {
+    category: Category;
+    max: number;
+    min: number;
+};
+
 // Datos para crear/actualizar
 export type ShooterInput = Omit<Shooter, 'id' | 'createdAt'>;
 export type EventInput = Omit<Event, 'id'>;

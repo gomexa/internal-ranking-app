@@ -1,4 +1,4 @@
-import { Category, EventType } from '@/types';
+import {Category, EventType, Threshold} from '@/types';
 
 // Pesos de los eventos según el reglamento
 export const EVENT_WEIGHTS: Record<EventType, number> = {
@@ -13,7 +13,7 @@ export const RANKING_REQUIREMENTS = {
 };
 
 // Umbrales de categorías
-export const CATEGORY_THRESHOLDS = [
+export const CATEGORY_THRESHOLDS: Threshold[] = [
   { category: 'Master', max: 100, min: 80 },
   { category: 'Avanzado', max: 79.99, min: 65 },
   { category: 'Intermedio', max: 64.99, min: 50 },
@@ -36,12 +36,13 @@ export function getCategory(averageEffectiveness: number): Category {
 }
 
 // Colores para las categorías (Tailwind classes)
+// Oro, Plata, Bronce, Verde
 export const CATEGORY_COLORS: Record<Category, string> = {
-  'Master': 'bg-yellow-500 text-black',
-  'Avanzado': 'bg-blue-500 text-white',
-  'Intermedio': 'bg-green-500 text-white',
-  'Iniciado': 'bg-gray-500 text-white',
-  'Sin clasificar': 'bg-gray-300 text-gray-900',
+  'Master': 'bg-gradient-to-r from-yellow-400 to-yellow-500 text-white font-semibold',
+  'Avanzado': 'bg-gradient-to-r from-slate-400 to-gray-500 text-white font-semibold',
+  'Intermedio': 'bg-gradient-to-r from-amber-500 to-amber-600 text-white font-semibold',
+  'Iniciado': 'bg-gradient-to-r from-emerald-500 to-emerald-700 text-white font-semibold',
+  'Sin clasificar': 'bg-sky-600 text-white font-semibold',
 };
 
 // Cantidad de eventos por temporada

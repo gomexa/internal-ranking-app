@@ -3,7 +3,7 @@
 import { Layout } from '@/components/layout/Layout';
 import { RankingTable, SeasonSelector } from '@/components/ranking';
 import { useRanking } from '@/hooks';
-import {RANKING_REQUIREMENTS, EVENT_WEIGHTS, CATEGORY_THRESHOLDS} from '@/lib/constants';
+import {RANKING_REQUIREMENTS, EVENT_WEIGHTS, CATEGORY_THRESHOLDS, CATEGORY_COLORS} from '@/lib/constants';
 
 export default function HomePage() {
   const { ranking, loading, error, season, changeSeason } = useRanking();
@@ -57,35 +57,14 @@ export default function HomePage() {
                 CATEGORY_THRESHOLDS.map((threshold) => (
                     <div key={threshold.category} className="flex items-center gap-2">
                     <span
-                        className={`w-3 h-3 rounded-full ${
-                        threshold.category === 'Master' ? 'bg-yellow-500' :
-                        threshold.category === 'Avanzado' ? 'bg-blue-500' :
-                        threshold.category === 'Intermedio' ? 'bg-green-500' :
-                        'bg-gray-500'
-                        }`}
+                        className={`w-3 h-3 rounded-full ${CATEGORY_COLORS[threshold.category]}`}
                     ></span>
                     <span>
                         {threshold.category}: {threshold.min}%{threshold.max ? ` - ${threshold.max}%` : '+'}
                     </span>
                     </div>
                 ))
-                }
-            {/*<div className="flex items-center gap-2">*/}
-            {/*  <span className="w-3 h-3 rounded-full bg-yellow-500"></span>*/}
-            {/*  <span>Master: ≥ 85%</span>*/}
-            {/*</div>*/}
-            {/*<div className="flex items-center gap-2">*/}
-            {/*  <span className="w-3 h-3 rounded-full bg-blue-500"></span>*/}
-            {/*  <span>Avanzado: 75% - 84.99%</span>*/}
-            {/*</div>*/}
-            {/*<div className="flex items-center gap-2">*/}
-            {/*  <span className="w-3 h-3 rounded-full bg-green-500"></span>*/}
-            {/*  <span>Intermedio: 65% - 74.99%</span>*/}
-            {/*</div>*/}
-            {/*<div className="flex items-center gap-2">*/}
-            {/*  <span className="w-3 h-3 rounded-full bg-gray-500"></span>*/}
-            {/*  <span>Iniciación: &lt; 65%</span>*/}
-            {/*</div>*/}
+            }
           </div>
         </div>
       </div>

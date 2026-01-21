@@ -25,6 +25,7 @@ export function RankingTable({ ranking, loading }: RankingTableProps) {
 
     return leaders;
   }, [ranking]);
+
   if (loading) {
     return (
       <Card>
@@ -80,7 +81,7 @@ export function RankingTable({ ranking, loading }: RankingTableProps) {
               <tr
                 key={entry.shooter.id}
                 className={`
-                  ${isLeader ? 'bg-amber-50 border-l-4 border-l-amber-400' : entry.qualifies ? 'bg-white' : 'bg-gray-50'} text-gray-900
+                  ${isLeader ? 'bg-amber-50 border-l-4 !border-l-amber-400' : entry.qualifies ? 'bg-white' : 'bg-gray-50'} text-gray-900
                   hover:bg-gray-100 transition-colors
                 `}
               >
